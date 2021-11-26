@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WORD GAMG</title>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1><span class="main">WORD GAME</span></h1>
+      <div id="suggestWord"></div>
+      <div id="inputBox">
+        <input type="text" id="typing" />
+      </div>
+    </div>
+  </body>
+  <script>
+    const words = `저 푸른 바다 끝까지 말을 달리면 소금 같은 별이 떠 있고 사막엔 낙타만이 가는 길 무수한 사랑 길이 되어 열어줄거야`;
+    const wordList = words.split(" ");
+    //   console.log(wordList[Math.floor(Math.random() * wordList.length)]);
+
+    const suggestWord = document.querySelector("#suggestWord");
+    const typing = document.querySelector("#typing");
+    let randomTxt = wordList[Math.floor(Math.random() * wordList.length)];
+    suggestWord.textContent = randomTxt;
+
+    //    console.log(wordList[2]);
+    typing.addEventListener("keyup", function (e) {
+      //    console.log(e);
+      if (e.key === "Enter") {
+        // console.log(typing.value);
+        if (typing.value === randomTxt) {
+          randomTxt = wordList[Math.floor(Math.random() * wordList.length)];
+          suggestWord.textContent = randomTxt;
+          typing.value = "";
+        }
+      }
+    });
+  </script>
+</html>
